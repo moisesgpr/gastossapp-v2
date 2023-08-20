@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  mobileMenu: boolean = false;
+
+  showMobileMenu(){
+    this.mobileMenu = !this.mobileMenu;
+  }
 
 }

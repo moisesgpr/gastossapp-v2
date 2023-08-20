@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-nav-bar2',
+  templateUrl: './nav-bar2.component.html',
+  styleUrls: ['./nav-bar2.component.css']
 })
-
-export class DashboardComponent {
-  
+export class NavBar2Component {
     darkIcon: boolean = false;
     userMenu: boolean = false;
     sidenav: boolean = true;
+
+    @Output() sidenavStatus = new EventEmitter<{sidenav: boolean}>
 
     constructor(){}
 
@@ -46,12 +46,7 @@ export class DashboardComponent {
 
     toggleSidenav(){
         this.sidenav = !this.sidenav;
-    }
-
-    sidenavEventListener(eventData: {sidenav: boolean}){
-        console.log('evento disparado');
-        
-        this.sidenav = eventData.sidenav
+        this.sidenavStatus.emit({sidenav: this.sidenav})
     }
 
 }
